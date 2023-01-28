@@ -7,7 +7,7 @@ import Transport.*;
 /**
  * Abstract class representing a car.
  */
-public abstract class Car implements Movable{
+public abstract class Car implements Movable, Transportable{
 
 
     private final int nrDoors;
