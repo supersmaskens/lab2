@@ -83,16 +83,6 @@ public abstract class MovableAbstract implements Movable{
     }
 
 
-    /**
-     * Clamp method, not sure where to put it.
-     * @param value A double to be clamped.
-     * @param lowerBound Lowerbound.
-     * @param upperBound Upperbound.
-     * @return Clamped value.
-     */
-    private double clamp(double value, double lowerBound, double upperBound){
-        return Math.max(lowerBound, Math.min(upperBound, value));
-    }
 
     /**
      * Changes the current X and Y coordinates based on objects currentSpeed value.

@@ -1,6 +1,9 @@
 package Cars;
 
 import java.awt.*;
+
+import Utilities.MyUtil;
+
 import Movable.*;
 import Transport.*;
 
@@ -49,7 +52,7 @@ public abstract class Car implements Movable, Transportable{
     /**
      * Number of doors that the car has.
      */
-    public int getNrDoors(){
+    public int getNrDoors() {
         return nrDoors;
     }
 
@@ -57,7 +60,7 @@ public abstract class Car implements Movable, Transportable{
      * Gives the engine power.
      * @return Engine power.
      */
-    public double getEnginePower(){
+    public double getEnginePower() {
         return enginePower;
     }
 
@@ -73,7 +76,7 @@ public abstract class Car implements Movable, Transportable{
      * Gives the color of the car.
      * @return The cars current color.
      */
-    public Color getColor(){
+    public Color getColor() {
         return color;
     }
 
@@ -81,21 +84,21 @@ public abstract class Car implements Movable, Transportable{
      * Sets a new color for the car.
      * @param clr The new color.
      */
-    public void setColor(Color clr){
+    public void setColor(Color clr) {
         color = clr;
     }
 
     /**
      * Sets the current speed to 0.1.
      */
-    public void startEngine(){
+    public void startEngine() {
         currentSpeed = 0.1;
     }
 
     /**
      * Sets the current speed to 0.
      */
-    public void stopEngine(){
+    public void stopEngine() {
         currentSpeed = 0;
     }
 
@@ -110,8 +113,8 @@ public abstract class Car implements Movable, Transportable{
      * New value will be between 0 and enginePower.
      * @param amount Should be between 0 and 1.
      */
-    public void incrementSpeed(double amount){
-        currentSpeed = clamp(getCurrentSpeed() + speedFactor() * amount,0, enginePower);
+    public void incrementSpeed(double amount) {
+        currentSpeed = MyUtil.clamp(getCurrentSpeed() + speedFactor() * amount, 0, enginePower);
     }
 
     /**
@@ -119,8 +122,8 @@ public abstract class Car implements Movable, Transportable{
      * New value will be between 0 and enginePower.
      * @param amount Should be between 0 and 1.
      */
-    public void decrementSpeed(double amount){
-        currentSpeed = clamp(getCurrentSpeed() - speedFactor() * amount,0, enginePower);
+    public void decrementSpeed(double amount) {
+        currentSpeed = MyUtil.clamp(getCurrentSpeed() - speedFactor() * amount, 0, enginePower);
     }
 
     // TODO fix this method according to lab pm
@@ -130,8 +133,8 @@ public abstract class Car implements Movable, Transportable{
      * Calls incrementSpeed with a value between 0 and 1.
      * @param amount Should be between 0 and 1.
      */
-    public void gas(double amount){
-        incrementSpeed(clamp(amount, 0 ,1));
+    public void gas(double amount) {
+        incrementSpeed(MyUtil.clamp(amount, 0, 1));
     }
 
     // TODO fix this method according to lab pm
@@ -141,7 +144,8 @@ public abstract class Car implements Movable, Transportable{
      * Calls decrementSpeed with a value between 0 and 1.
      * @param amount Should be between 0 and 1.
      */
-    public void brake(double amount){
-        decrementSpeed(clamp(amount, 0, 1));
+    public void brake(double amount) {
+        decrementSpeed(MyUtil.clamp(amount, 0, 1));
     }
+}
 
