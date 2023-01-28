@@ -1,3 +1,5 @@
+import Cars.Saab95;
+import Cars.Volvo240;
 import org.junit.Test;
 import java.awt.*;
 
@@ -5,7 +7,7 @@ public class test {
     @Test
     public void carModelName() {
         Volvo240 car = new Volvo240();
-        assert(car.getModelName().equals("Volvo240"));
+        assert(car.getModelName().equals("Cars.Volvo240"));
     }
     @Test
     public void carColor(){

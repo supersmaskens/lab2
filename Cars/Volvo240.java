@@ -1,9 +1,11 @@
+package Cars;
+
 import java.awt.*;
 
 /**
  * A class representing a Volvo 240.
  */
-public class Volvo240 extends Car {
+public class Volvo240 extends PassengerCar {
 
     /**
      * Represents the cars trim factor and affects its speedFactor value.
@@ -19,7 +21,7 @@ public class Volvo240 extends Car {
      * @param direction Initial direction.
      */
     public Volvo240(double xPosition, double yPosition, double direction) {
-        super(4, Color.black, 100, "Volvo240",
+        super(4, Color.black, 100, "Cars.Volvo240",
                 xPosition, yPosition, direction % (2 * Math.PI));
         stopEngine();
     }

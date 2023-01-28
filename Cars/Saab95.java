@@ -1,8 +1,10 @@
+package Cars;
+
 import java.awt.*;
 /**
  * A class representing a Saab 95.
  */
-public class Saab95 extends Car{
+public class Saab95 extends PassengerCar {
     /**
      * Boolean that affects the speed factor of the car.
      */
@@ -17,7 +19,7 @@ public class Saab95 extends Car{
      */
 
     public Saab95(double xPosition, double yPosition, double direction){
-        super(2, Color.red, 125, "Saab95", xPosition, yPosition, direction);
+        super(2, Color.red, 125, "Cars.Saab95", xPosition, yPosition, direction);
 	    turboOn = false;
         stopEngine();
     }

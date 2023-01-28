@@ -1,4 +1,6 @@
 import java.awt.*;
+import Movable.*;
+import Transport.*;
 
 /**
  * Abstract class representing a car.
