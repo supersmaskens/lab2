@@ -23,7 +23,7 @@ public abstract class TransporterAbstract implements Transporter{
     }
     public boolean canTransport(Transportable t) {
         return possibleTransportables.contains(t.getClass().getSimpleName())
-                && canLoad && !contains(t);
+                && canLoad && contains(t);
     }
     public boolean contains(Transportable t)  {
         return currentTransportables.contains(t);
