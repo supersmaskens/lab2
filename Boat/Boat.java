@@ -1,27 +1,30 @@
 package Boat;
+
 import Cars.*;
+
 import java.util.ArrayList;
 
+import Transport.*;
+import Movable.*;
 
-public abstract class Boat {
-    private String name;
-    private double xPosition;
-    private double yPosition;
-    private double direction;
-    private Transporter_Helper transporterHelper;
-    private ArrayList<Car> cars;
 
-    public Boat(String name, double xPosition, double yPosition, double direction) {
-        this.name = name;
-        this.xPosition = xPosition;
-        this.yPosition = yPosition;
-        this.direction = direction;
-        this.transporterHelper = transporterHelper;
+public abstract class Boat implements Movable {
+    final private Movable_Helper boat;
+
+    public Boat(double xPosition, double yPosition, double direction, double currentSpeed) {
+        boat = new Movable_Helper(xPosition, yPosition, direction, currentSpeed);
     }
 
-
-
+    public void turnLeft() {
+        boat.turnLeft();
     }
 
+    public void turnRight() {
+        boat.turnRight();
+    }
+
+    public void move() {
+        boat.move();
+    }
 
 }

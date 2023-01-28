@@ -1,5 +1,7 @@
 package Movable;
 
+import java.awt.*;
+
 public abstract class MovableAbstract implements Movable{
 
     /**
@@ -21,6 +23,13 @@ public abstract class MovableAbstract implements Movable{
      */
 
     private double currentSpeed;
+    public MovableAbstract(double xPosition, double yPosition, double direction, double currentSpeed) {
+        this.xPosition = xPosition;
+        this.yPosition = yPosition;
+        this.direction = direction;
+        this.currentSpeed = currentSpeed;
+    }
+
 
     public double getX() {
         return xPosition;
