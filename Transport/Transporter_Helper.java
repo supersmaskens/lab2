@@ -2,20 +2,18 @@ package Transport;
 
 import java.util.List;
 
-public class Transporter_Helper implements Transporter {
+public class Transporter_Helper extends TransporterAbstract{
     private int maxTransportables;
-    private List<Transportable> Transportables;
 
-    public boolean contains(Transportable t) {
-        return Transportables.contains(t);
+    public boolean load(Transportable t) {
+        if(Transportables.size() < maxTransportables) {
+            return Transportables.add(t);
+        }
+        return false;
     }
 
-    public void load(Transportable t) {
-        Transportables.add(t);
-    }
-
-    public void removeTransportable(Transportable t) {
-        Transportables.remove(t);
+    public boolean unload(Transportable t) {
+        return Transportables.remove(t);
     }
 
     public void updateTransportables() {

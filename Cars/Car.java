@@ -9,31 +9,13 @@ import Transport.*;
  */
 public abstract class Car implements Movable{
 
-    /**
-     * Represents position on X-axis.
-     */
-    private double xPosition;
-    /**
-     * Represents position on Y-axis.
-     */
-    private double yPosition;
-    /**
-     * Represents direction and should always be between -2 * PI and 2 * PI.
-     */
-    private double direction;
 
-    /**
-     * Number of doors that the car has.
-     */
     private final int nrDoors;
     /**
      * Engine power of the car.
      */
     double enginePower;
-    /**
-     * The current speed of the car.
-     */
-    private double currentSpeed;
+
     /**
      * Color of the car.
      */
@@ -65,54 +47,7 @@ public abstract class Car implements Movable{
     }
 
     /**
-     * Gives the current X position.
-     * @return Current X position.
-     */
-    public double getX() {
-        return xPosition;
-    }
-
-    /**
-     * Sets a new X position.
-     * @param xPosition New X position.
-     */
-    public void setX(double xPosition) {
-        this.xPosition = xPosition;
-    }
-    /**
-     * Gives the current Y position.
-     * @return Current Y position.
-     */
-    public double getY() {
-        return yPosition;
-    }
-
-    /**
-     * Sets a new Y position.
-     * @param yPosition New Y Position.
-     */
-    public void setY(double yPosition) {
-        this.yPosition = yPosition;
-    }
-    /**
-     * Gives the current direction.
-     * @return Current direction.
-     */
-    public double getDirection() {
-        return direction;
-    }
-
-    /**
-     * Sets a new direction.
-     * @param direction New direction.
-     */
-    public void setDirection(double direction) {
-        this.direction = direction;
-    }
-
-    /**
-     * Gives the number of doors.
-     * @return Number of doors.
+     * Number of doors that the car has.
      */
     public int getNrDoors(){
         return nrDoors;
@@ -124,14 +59,6 @@ public abstract class Car implements Movable{
      */
     public double getEnginePower(){
         return enginePower;
-    }
-
-    /**
-     * Gives the current speed.
-     * @return Current speed.
-     */
-    public double getCurrentSpeed(){
-        return currentSpeed;
     }
 
     /**
@@ -172,16 +99,6 @@ public abstract class Car implements Movable{
         currentSpeed = 0;
     }
 
-    /**
-     * Clamp method, not sure where to put it.
-     * @param value A double to be clamped.
-     * @param lowerBound Lowerbound.
-     * @param upperBound Upperbound.
-     * @return Clamped value.
-     */
-    public double clamp(double value, double lowerBound, double upperBound){
-        return Math.max(lowerBound, Math.min(upperBound, value));
-    }
 
     /**
      * SpeedFactor is used by each subclass to calculate speed when moving.
@@ -227,27 +144,4 @@ public abstract class Car implements Movable{
     public void brake(double amount){
         decrementSpeed(clamp(amount, 0, 1));
     }
-
-    /**
-     * Changes the current X and Y coordinates based on objects currentSpeed value.
-     */
-    public void move() {
-        setX(Math.cos(getDirection()) * getCurrentSpeed());
-        setY(-Math.sin(getDirection()) * getCurrentSpeed());
-    }
-
-    /**
-     * Changes direction by one degree (PI / 180) to the left.
-     */
-    public void turnLeft(){
-        setDirection((getDirection() + (Math.PI / 180)) % (Math.PI * 2));
-    }
-
-    /**
-     * Changes direction by one degree (PI / 180) to the right.
-     */
-    public void turnRight(){
-        setDirection((getDirection() - (Math.PI / 180)) % (Math.PI * 2));
-    }
-}
 
