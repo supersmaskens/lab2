@@ -8,5 +8,5 @@ public interface Movable {
     void move();
     void turnLeft();
     void turnRight();
-
+    void updatePosition(double xPosition, double yPosition, double direction);
 }

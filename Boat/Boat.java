@@ -43,6 +43,11 @@ public abstract class Boat implements Movable {
     public void move() {
         movable.move();
     }
+    public void updatePosition(double xPosition, double yPosition, double direction) {
+        movable.setX(xPosition);
+        movable.setY(yPosition);
+        movable.setDirection(direction);
+    }
 
 // TODO Boat probably needs all these methods, maybe enginePower or something more general
 // TODO Not sure how to inherit these though.

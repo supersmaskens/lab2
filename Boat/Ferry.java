@@ -9,20 +9,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Ferry extends Boat implements Transporter {
-    private Transporter_Helper ferry;
+public class Ferry extends Boat implements Transporter<Transportable> {
+    private Transporter_Helper transporter;
 
-
-    public Ferry(double xPosition, double yPosition, double direction, double currentSpeed) {
+    public Ferry(double xPosition, double yPosition, double direction, int capacity) {
         super(Color.blue,250, "BigböyFerry", xPosition, yPosition, direction);
-        ferry = new Transporter_Helper(30);
-        ferry.addTransportable("PassengerCar");
+        transporter = new Transporter_Helper(30);
     }
+
     public double speedFactor() {
         return getEnginePower() * 0.01 * 1.25;
     }
     public boolean contains(Transportable t) {
-        return false;
+        return transporter.load(t);
     }
 
     public boolean load(Transportable t) {
@@ -30,5 +29,8 @@ public class Ferry extends Boat implements Transporter {
     }
     public boolean unload(Transportable t) {
         return false;
+    }
+    public void updateTransports(double xPosition, double yPosition, double direction) {
+        transporter.updateTransports(xPosition, yPosition, direction);
     }
 }
