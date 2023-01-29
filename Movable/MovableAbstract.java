@@ -2,7 +2,7 @@ package Movable;
 
 import java.awt.*;
 
-public abstract class MovableAbstract implements Movable{
+public abstract class MovableAbstract{
 
     /**
      * Represents position on X-axis.

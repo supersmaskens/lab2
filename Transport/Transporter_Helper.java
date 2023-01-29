@@ -3,7 +3,7 @@ package Transport;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Transporter_Helper extends TransporterAbstract{
+public class Transporter_Helper<T extends Transportable> extends TransporterAbstract<T>{
     private final int maxTransportables;
 
     public Transporter_Helper(int max) {
@@ -22,7 +22,7 @@ public class Transporter_Helper extends TransporterAbstract{
         }
     }
 
-    public boolean load(Transportable t) {
+    public boolean load(T t) {
         if(canTransport(t) && !contains(t)
                 && currentTransports.size() < maxTransportables){
             return currentTransports.add(t);
@@ -30,7 +30,7 @@ public class Transporter_Helper extends TransporterAbstract{
         return false;
     }
 
-    public boolean unload(Transportable t) {
+    public boolean unload(T t) {
         return currentTransports.remove(t);
     }
     public boolean unloadFirst() {

@@ -2,8 +2,13 @@ package Transport;
 
 import java.util.List;
 
-public class Transportable_Helper implements Transportable {
-    public boolean beLoaded(TransporterAbstract t) {
-        return t.load(this);
+public class Transportable_Helper {
+    private boolean transported;
+    public Transportable_Helper() {
+        transported = false;
+    }
+
+    public void beTransported() {
+        transported = !transported;
     }
 }

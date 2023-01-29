@@ -2,7 +2,7 @@ package Transport;
 
 import java.util.List;
 
-public abstract class TransporterAbstract implements Transporter{
+public abstract class TransporterAbstract<T extends Transportable> implements Transporter<T>{
     protected List<String> possibleTransportables;
     protected List<Transportable> currentTransports;
     private boolean canLoad;
@@ -24,17 +24,17 @@ public abstract class TransporterAbstract implements Transporter{
         }
         return false;
     }
-    public boolean removeTransportable(Transportable t) {
+    public boolean removeTransportable(T t) {
         return possibleTransportables.remove(t.getClass().getSimpleName());
     }
-    public boolean canTransport(Transportable t) {
+    public boolean canTransport(T t) {
         return possibleTransportables.contains(t.getClass().getSimpleName())
                 && canLoad;
     }
-    public boolean contains(Transportable t)  {
+    public boolean contains(T t)  {
         return currentTransports.contains(t);
     }
-    public abstract boolean load(Transportable t);
-    public abstract boolean unload(Transportable t);
+    public abstract boolean load(T t);
+    public abstract boolean unload(T t);
     public abstract void updateTransportables();
 }

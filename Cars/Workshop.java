@@ -1,7 +1,7 @@
 package Cars;
 import Transport.*;
 
-public class Workshop<T extends Transportable> implements Transporter {
+public class Workshop<T extends Transportable> implements Transporter<T> {
     private TransporterAbstract transporter;
 
 
