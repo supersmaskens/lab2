@@ -10,7 +10,7 @@ import Transport.*;
 /**
  * Abstract class representing a car.
  */
-public abstract class Car implements Movable, Transportable{
+public abstract class Car implements Movable {
 
     private MovableAbstract movable;
     private final int nrDoors;
@@ -53,7 +53,9 @@ public abstract class Car implements Movable, Transportable{
     public int getNrDoors() {
         return nrDoors;
     }
-
+    public double getCurrentSpeed() {
+        return movable.getCurrentSpeed();
+    }
     /**
      * Gives the engine power.
      * @return Engine power.
