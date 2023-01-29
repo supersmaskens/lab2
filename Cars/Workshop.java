@@ -12,6 +12,7 @@ public class Workshop<T extends Transportable> implements Transporter<T> {
     public void loadeableOn() {
         transporter.loadableOn();
     }
+
     public void loadableOff() {
         transporter.loadableOff();
     }
@@ -20,11 +21,9 @@ public class Workshop<T extends Transportable> implements Transporter<T> {
         return transporter.contains(t);
     }
 
-
     public boolean load(T t) {
         return transporter.load(t);
     }
-
 
     public boolean unload(T t) {
         return transporter.unload(t);
