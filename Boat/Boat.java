@@ -10,22 +10,38 @@ import Movable.*;
 
 
 public abstract class Boat implements Movable {
-    final private Movable_Helper boat;
+    final private MovableAbstract movable;
 
-    public Boat(double xPosition, double yPosition, double direction, double currentSpeed) {
-        boat = new Movable_Helper(xPosition, yPosition, direction, currentSpeed);
+    /**
+     * Color of the boat.
+     */
+    private Color color;
+    private final double enginePower;
+    /**
+     * The boat model name.
+     */
+    private final String modelName;
+
+
+    public Boat(Color color, double enginePower, String name,
+                double xPosition, double yPosition, double direction) {
+        this.color = color;
+        this.enginePower = enginePower;
+        modelName = name;
+        movable = new Movable_Helper(xPosition, yPosition, direction);
+
     }
 
     public void turnLeft() {
-        boat.turnLeft();
+        movable.turnLeft();
     }
 
     public void turnRight() {
-        boat.turnRight();
+        movable.turnRight();
     }
 
     public void move() {
-        boat.move();
+        movable.move();
     }
 
 // TODO Boat probably needs all these methods, maybe enginePower or something more general
@@ -66,14 +82,14 @@ public abstract class Boat implements Movable {
      * Sets the current speed to 0.1.
      */
     public void startEngine() {
-        currentSpeed = 0.1;
+        movable.setCurrentSpeed(0.1);
     }
 
     /**
      * Sets the current speed to 0.
      */
     public void stopEngine() {
-        currentSpeed = 0;
+        movable.setCurrentSpeed(0);
     }
 
 
@@ -81,26 +97,6 @@ public abstract class Boat implements Movable {
      * SpeedFactor is used by each subclass to calculate speed when moving.
      */
     abstract double speedFactor();
-
-    /**
-     * Sets a new higher currentSpeed value.
-     * New value will be between 0 and enginePower.
-     *
-     * @param amount Should be between 0 and 1.
-     */
-    public void incrementSpeed(double amount) {
-        currentSpeed = clamp(getCurrentSpeed() + speedFactor() * amount, 0, enginePower);
-    }
-
-    /**
-     * Sets a new lower currentSpeed value.
-     * New value will be between 0 and enginePower.
-     *
-     * @param amount Should be between 0 and 1.
-     */
-    public void decrementSpeed(double amount) {
-        currentSpeed = clamp(getCurrentSpeed() - speedFactor() * amount, 0, enginePower);
-    }
 
     // TODO fix this method according to lab pm
 
@@ -111,7 +107,7 @@ public abstract class Boat implements Movable {
      * @param amount Should be between 0 and 1.
      */
     public void gas(double amount) {
-        incrementSpeed(clamp(amount, 0, 1));
+        movable.incrementSpeed(amount, speedFactor(), enginePower);
     }
 
     /**
@@ -121,6 +117,6 @@ public abstract class Boat implements Movable {
      * @param amount Should be between 0 and 1.
      */
     public void brake(double amount) {
-        decrementSpeed(clamp(amount, 0, 1));
+        movable.decrementSpeed(amount, speedFactor(), enginePower);
     }
 }

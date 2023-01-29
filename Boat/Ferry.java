@@ -15,18 +15,19 @@ public class Ferry extends Boat implements Transporter {
 
 
     public Ferry(double xPosition, double yPosition, double direction, double currentSpeed) {
-        super(xPosition, yPosition, direction, currentSpeed);
-        ferry = new Transporter_Helper(30); // is it possibleTransportables or current transportables
+        super(xPosition, yPosition, direction);
+        PassengerCar car = new Volvo240();
+        ferry = new Transporter_Helper(30, car); // is it possibleTransportables or current transportables
                                                  // that is second parameter?
     }
     public boolean contains(Transportable t) {
-        return ferry.contains(t);
+        return false;
     }
 
     public boolean load(Transportable t) {
-        return ferry.load(t);
+        return false;
     }
     public boolean unload(Transportable t) {
-        return ferry.unloadFirst();
+        return false;
     }
 }

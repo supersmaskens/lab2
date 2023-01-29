@@ -12,7 +12,7 @@ import Transport.*;
  */
 public abstract class Car implements Movable, Transportable{
 
-
+    private MovableAbstract movable;
     private final int nrDoors;
     /**
      * Engine power of the car.
@@ -44,9 +44,7 @@ public abstract class Car implements Movable, Transportable{
         this.color = color;
         this.enginePower = enginePower;
         this.modelName = name;
-        this.xPosition = xPosition;
-        this.yPosition = yPosition;
-        this.direction = direction;
+        movable = new Movable_Helper(xPosition, yPosition, direction);
     }
 
     /**
@@ -92,14 +90,14 @@ public abstract class Car implements Movable, Transportable{
      * Sets the current speed to 0.1.
      */
     public void startEngine() {
-        currentSpeed = 0.1;
+        movable.setCurrentSpeed(0.1);
     }
 
     /**
      * Sets the current speed to 0.
      */
     public void stopEngine() {
-        currentSpeed = 0;
+        movable.setCurrentSpeed(0);
     }
 
 
@@ -108,23 +106,7 @@ public abstract class Car implements Movable, Transportable{
      */
     abstract double speedFactor();
 
-    /**
-     * Sets a new higher currentSpeed value.
-     * New value will be between 0 and enginePower.
-     * @param amount Should be between 0 and 1.
-     */
-    public void incrementSpeed(double amount) {
-        currentSpeed = MyUtil.clamp(getCurrentSpeed() + speedFactor() * amount, 0, enginePower);
-    }
 
-    /**
-     * Sets a new lower currentSpeed value.
-     * New value will be between 0 and enginePower.
-     * @param amount Should be between 0 and 1.
-     */
-    public void decrementSpeed(double amount) {
-        currentSpeed = MyUtil.clamp(getCurrentSpeed() - speedFactor() * amount, 0, enginePower);
-    }
 
     // TODO fix this method according to lab pm
 
@@ -134,7 +116,7 @@ public abstract class Car implements Movable, Transportable{
      * @param amount Should be between 0 and 1.
      */
     public void gas(double amount) {
-        incrementSpeed(MyUtil.clamp(amount, 0, 1));
+        movable.incrementSpeed(amount, speedFactor(), enginePower);
     }
 
     // TODO fix this method according to lab pm
@@ -145,7 +127,16 @@ public abstract class Car implements Movable, Transportable{
      * @param amount Should be between 0 and 1.
      */
     public void brake(double amount) {
-        decrementSpeed(MyUtil.clamp(amount, 0, 1));
+        movable.decrementSpeed(amount, speedFactor(), enginePower);
+    }
+    public void move() {
+        movable.move();
+    }
+    public void turnLeft() {
+        movable.turnLeft();
+    }
+    public void turnRight() {
+        movable.turnRight();
     }
 }
 

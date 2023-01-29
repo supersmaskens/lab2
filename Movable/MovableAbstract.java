@@ -23,6 +23,8 @@ public abstract class MovableAbstract implements Movable{
      */
 
     private double currentSpeed;
+
+
     public MovableAbstract(double xPosition, double yPosition, double direction, double currentSpeed) {
         this.xPosition = xPosition;
         this.yPosition = yPosition;
@@ -82,27 +84,24 @@ public abstract class MovableAbstract implements Movable{
         return currentSpeed;
     }
 
-
+    public void setCurrentSpeed(double newSpeed) {
+        currentSpeed = newSpeed;
+    }
 
     /**
      * Changes the current X and Y coordinates based on objects currentSpeed value.
      */
-    public void move() {
-        setX(Math.cos(getDirection()) * getCurrentSpeed());
-        setY(-Math.sin(getDirection()) * getCurrentSpeed());
-    }
+    public abstract void move();
 
     /**
      * Changes direction by one degree (PI / 180) to the left.
      */
-    public void turnLeft(){
-        setDirection((getDirection() + (Math.PI / 180)) % (Math.PI * 2));
-    }
+    public abstract void turnLeft();
 
     /**
      * Changes direction by one degree (PI / 180) to the right.
      */
-    public void turnRight(){
-        setDirection((getDirection() - (Math.PI / 180)) % (Math.PI * 2));
-    }
+    public abstract void turnRight();
+    public abstract void incrementSpeed(double amount, double speedFactor, double max);
+    public abstract void decrementSpeed(double amount, double speedFactor, double max);
 }
