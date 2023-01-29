@@ -4,7 +4,7 @@ import java.util.List;
 
 public abstract class TransporterAbstract implements Transporter{
     protected List<String> possibleTransportables;
-    protected List<Transportable> currentTransportables;
+    protected List<Transportable> currentTransports;
     private boolean canLoad;
     public void loadableOn() {
         canLoad = true;
@@ -18,6 +18,12 @@ public abstract class TransporterAbstract implements Transporter{
         }
         return false;
     }
+    public boolean addTransportable(String s) {
+        if (!possibleTransportables.contains(s)) {
+            return possibleTransportables.add(s);
+        }
+        return false;
+    }
     public boolean removeTransportable(Transportable t) {
         return possibleTransportables.remove(t.getClass().getSimpleName());
     }
@@ -26,7 +32,7 @@ public abstract class TransporterAbstract implements Transporter{
                 && canLoad && contains(t);
     }
     public boolean contains(Transportable t)  {
-        return currentTransportables.contains(t);
+        return currentTransports.contains(t);
     }
     public abstract boolean load(Transportable t);
     public abstract boolean unload(Transportable t);

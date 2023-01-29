@@ -17,7 +17,7 @@ public abstract class Car implements Movable, Transportable{
     /**
      * Engine power of the car.
      */
-    double enginePower;
+    private double enginePower;
 
     /**
      * Color of the car.

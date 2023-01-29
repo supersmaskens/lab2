@@ -11,14 +11,15 @@ import java.util.List;
 
 public class Ferry extends Boat implements Transporter {
     private Transporter_Helper ferry;
-    private List<Transportable> possibleTransportables = new ArrayList<>(); //Not sure how to initiate this with Car
 
 
     public Ferry(double xPosition, double yPosition, double direction, double currentSpeed) {
-        super(xPosition, yPosition, direction);
-        PassengerCar car = new Volvo240();
-        ferry = new Transporter_Helper(30, car); // is it possibleTransportables or current transportables
-                                                 // that is second parameter?
+        super(Color.blue,250, "BigböyFerry", xPosition, yPosition, direction);
+        ferry = new Transporter_Helper(30);
+        ferry.addTransportable("PassengerCar");
+    }
+    public double speedFactor() {
+        return getEnginePower() * 0.01 * 1.25;
     }
     public boolean contains(Transportable t) {
         return false;

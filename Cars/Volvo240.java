@@ -39,7 +39,7 @@ public class Volvo240 extends PassengerCar {
      * @return Factor in incrementSpeed and decrementSpeed.
      */
     public double speedFactor() {
-        return enginePower * 0.01 * trimFactor;
+        return getEnginePower() * 0.01 * trimFactor;
     }
 
 }
