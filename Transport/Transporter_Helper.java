@@ -1,21 +1,24 @@
 package Transport;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Transporter_Helper extends TransporterAbstract{
     private final int maxTransportables;
 
     public Transporter_Helper(int max) {
+        possibleTransportables = new ArrayList<>();
+        currentTransports = new ArrayList<>();
         maxTransportables = max;
     }
-    public Transporter_Helper(int max, Transportable t) {
-        maxTransportables = max;
-        addTransportable(t);
+    public Transporter_Helper(int max, String transportable) {
+        this(max);
+        addTransportable(transportable);
     }
-    public Transporter_Helper(int max, List<Transportable> ts) {
-        maxTransportables = max;
-        for (Transportable t : ts) {
-            addTransportable(t);
+    public Transporter_Helper(int max, List<String> transportable) {
+        this(max);
+        for (String s : transportable) {
+            addTransportable(s);
         }
     }
 
