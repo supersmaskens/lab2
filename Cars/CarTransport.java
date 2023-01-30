@@ -19,17 +19,21 @@ public class CarTransport<T extends Transportable> extends Car implements Transp
     }
     public CarTransport(double xPosition, double yPosition, double direction,
                         int capacity) {
-        this(2, Color.red, 100, "Biltransport",
+        this(2, Color.red, 125, "Biltransport",
                 xPosition, yPosition, direction, capacity);
+    }
+    public CarTransport() {
+        this(2, Color.red, 100, "Biltransport"
+        , 0, 0, 0, 32);
     }
     public boolean load(T t) {
         return transporter.load(t);
     }
     public boolean unload() {
         if (!rampDown) return false;
-        double newX = movable.getX() - 5 * movable.getDirection();
-        double newY = movable.getY() + 5 * movable.getDirection();
-        return transporter.unloadLast(newX, newY, movable.getDirection());
+        double newX = getX() - 5 * getDirection();
+        double newY = getY() - 5 * getDirection();
+        return transporter.unloadLast(newX, newY, getDirection());
     }
     public boolean unload(T t) {
         return unload();
@@ -49,7 +53,7 @@ public class CarTransport<T extends Transportable> extends Car implements Transp
     }
     public void gas(double amount) {
         if(!rampDown) {
-            movable.incrementSpeed(amount, speedFactor(), getEnginePower());
+            incrementSpeed(amount, speedFactor(), getEnginePower());
         }
     }
     public void updateTransports(double xPosition, double yPositon, double direction) {

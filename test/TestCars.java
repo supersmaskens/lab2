@@ -122,4 +122,103 @@ public class TestCars {
         car.setTurboOff();
         assert (!car.isTurboOn());
     }
+    @Test
+    public void scaniaModelName() {
+        Scania scania = new Scania();
+        assert (scania.getModelName().equals("Cars.Scania"));
+    }
+
+    @Test
+    public void scaniaColor() {
+        Scania scania = new Scania();
+        scania.setColor(Color.black);
+        assert (scania.getColor() == Color.black);
+    }
+
+    @Test
+    public void scaniaEngineStart() {
+        Scania scania = new Scania();
+        scania.startEngine();
+        assert (scania.getCurrentSpeed() == 0.1);
+    }
+
+    @Test
+    public void scaniaEngineStop() {
+        Scania scania = new Scania();
+        scania.startEngine();
+        scania.stopEngine();
+        assert (scania.getCurrentSpeed() == 0);
+    }
+
+    @Test
+    public void defaultScaniaTest() {
+        Scania scania = new Scania();
+        assert (scania.getNrDoors() == 2 && scania.getEnginePower() == 400 && scania.getX() == 0 && scania.getY() == 0);
+    }
+
+    @Test
+    public void scaniaTurnLeftTest() {
+        Scania scania = new Scania();
+        scania.turnLeft();
+        assert (scania.getDirection() == Math.PI / 180);
+    }
+
+    @Test
+    public void scaniaTurnLeftCircleTest() {
+        Scania scania = new Scania(0,0,(Math.PI * 2) - (Math.PI / 180));
+        scania.turnLeft();
+        assert (scania.getDirection() == 0);
+    }
+
+    @Test
+    public void scaniaTurnRightTest() {
+        Scania scania = new Scania();
+        scania.turnRight();
+        assert (scania.getDirection() == -Math.PI / 180);
+    }
+
+    @Test
+    public void scaniaTurnRightCircleTest() {
+        Scania scania = new Scania(0, 0, -(Math.PI * 2) + (Math.PI / 180));
+        scania.turnRight();
+        assert (scania.getDirection() == 0);
+    }
+
+    @Test
+    public void scaniaGasTest() {
+        Scania scania = new Scania();
+        scania.gas(1);
+        assert (scania.getCurrentSpeed() == scania.speedFactor());
+    }
+
+    @Test
+    public void scaniaBrakeTest() {
+        Scania scania = new Scania();
+        scania.gas(1);
+        scania.brake(1);
+        assert (scania.getCurrentSpeed() == 0);
+    }
+
+    @Test
+    public void scaniaMoveTest() {
+        Scania scania = new Scania();
+        scania.gas(1);
+        scania.move();
+        assert (scania.getX() == scania.speedFactor() && scania.getY() == 0);
+    }
+    @Test
+    public void scaniaMoveFlatbedNetural() {
+        Scania scania = new Scania();
+        scania.increaseTiltFlatbed();
+        scania.move();
+        assert (scania.getX() == 0 && scania.getY() == 0);
+    }
+    @Test
+    public void scaniaRaiseFlatbedWhileMoving() {
+        Scania scania = new Scania();
+        scania.startEngine();
+        scania.increaseTiltFlatbed();
+        assert(scania.getFlatbedPosition()==0);
+    }
+
 }
