@@ -206,12 +206,14 @@ public class TestCars {
         scania.move();
         assert (scania.getX() == scania.speedFactor() && scania.getY() == 0);
     }
+    @Test
     public void scaniaMoveFlatbedNetural() {
         Scania scania = new Scania();
         scania.increaseTiltFlatbed();
         scania.move();
         assert (scania.getX() == 0 && scania.getY() == 0);
     }
+    @Test
     public void scaniaRaiseFlatbedWhileMoving() {
         Scania scania = new Scania();
         scania.startEngine();
