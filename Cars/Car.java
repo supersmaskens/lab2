@@ -2,17 +2,13 @@ package Cars;
 
 import java.awt.*;
 
-import Utilities.MyUtil;
-
 import Movable.*;
-import Transport.*;
 
 /**
  * Abstract class representing a car.
  */
-public abstract class Car implements Movable{
+public abstract class Car extends Mover{
 
-    protected final MovableAbstract movable;
     private final int nrDoors;
     /**
      * Engine power of the car.
@@ -40,11 +36,11 @@ public abstract class Car implements Movable{
      */
     public Car(int nrDoors, Color color, double enginePower, String name,
                double xPosition, double yPosition, double direction) {
+        super(xPosition, yPosition, direction);
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
         this.modelName = name;
-        movable = new Movable_Helper(xPosition, yPosition, direction);
     }
 
     /**
@@ -90,14 +86,14 @@ public abstract class Car implements Movable{
      * Sets the current speed to 0.1.
      */
     public void startEngine() {
-        movable.setCurrentSpeed(0.1);
+        setCurrentSpeed(0.1);
     }
 
     /**
      * Sets the current speed to 0.
      */
     public void stopEngine() {
-        movable.setCurrentSpeed(0);
+        setCurrentSpeed(0);
     }
 
 
@@ -116,7 +112,7 @@ public abstract class Car implements Movable{
      * @param amount Should be between 0 and 1.
      */
     public void gas(double amount) {
-        movable.incrementSpeed(amount, speedFactor(), enginePower);
+        incrementSpeed(amount, speedFactor(), enginePower);
     }
 
     // TODO fix this method according to lab pm
@@ -127,24 +123,8 @@ public abstract class Car implements Movable{
      * @param amount Should be between 0 and 1.
      */
     public void brake(double amount) {
-        movable.decrementSpeed(amount, speedFactor(), enginePower);
+        decrementSpeed(amount, speedFactor(), enginePower);
     }
-    public void move() {
-        movable.move();
-    }
-    public void turnLeft() {
-        movable.turnLeft();
-    }
-    public void turnRight() {
-        movable.turnRight();
-    }
-    public void updatePosition(double xPosition, double yPosition, double direction) {
-        movable.setX(xPosition);
-        movable.setY(yPosition);
-        movable.setDirection(direction);
-    }
-    public double getCurrentSpeed() {
-        return movable.getCurrentSpeed();
-    }
+
 }
 

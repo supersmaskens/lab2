@@ -17,6 +17,21 @@ public abstract class PassengerCar extends Car implements Transportable{
         isTransported = !isTransported;
         return isTransported;
     }
-
+    public void move() {
+        if(!isTransported) {
+            setX(Math.cos(getDirection()) * getCurrentSpeed());
+            setY(-Math.sin(getDirection()) * getCurrentSpeed());
+        }
+    }
+    public void turnLeft(){
+        if(!isTransported) {
+            setDirection((getDirection() + (Math.PI / 180)) % (Math.PI * 2));
+        }
+    }
+    public void turnRight(){
+        if(!isTransported) {
+            setDirection((getDirection() - (Math.PI / 180)) % (Math.PI * 2));
+        }
+    }
 
 }

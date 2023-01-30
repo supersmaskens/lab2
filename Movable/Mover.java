@@ -1,8 +1,8 @@
 package Movable;
 
-import java.awt.*;
+import Utilities.MyUtil;
 
-public abstract class MovableAbstract{
+public class Mover implements Movable {
 
     /**
      * Represents position on X-axis.
@@ -17,22 +17,23 @@ public abstract class MovableAbstract{
      */
     private double direction;
 
-    /**
-     * Gives the current X position.
-     * @return Current X position.
-     */
-
     private double currentSpeed;
 
-
-    public MovableAbstract(double xPosition, double yPosition, double direction, double currentSpeed) {
+    public Mover(double xPosition, double yPosition, double direction, double currentSpeed) {
         this.xPosition = xPosition;
         this.yPosition = yPosition;
         this.direction = direction;
         this.currentSpeed = currentSpeed;
+
     }
-
-
+    public Mover(double xPosition, double yPosition, double direction){
+        this(xPosition,yPosition,direction,0);
+    }
+    public Mover(){this(0,0,0,0);}
+    /**
+     * Gives the current X position.
+     * @return Current X position.
+     */
     public double getX() {
         return xPosition;
     }
@@ -91,17 +92,45 @@ public abstract class MovableAbstract{
     /**
      * Changes the current X and Y coordinates based on objects currentSpeed value.
      */
-    public abstract void move();
-
+    public void move() {
+        setX(Math.cos(getDirection()) * getCurrentSpeed());
+        setY(-Math.sin(getDirection()) * getCurrentSpeed());
+    }
+    public void updatePosition(double xPosition, double yPosition, double direction) {
+        setX(xPosition);
+        setY(yPosition);
+        setDirection(direction);
+    }
     /**
      * Changes direction by one degree (PI / 180) to the left.
      */
-    public abstract void turnLeft();
+    public void turnLeft(){
+        setDirection((getDirection() + (Math.PI / 180)) % (Math.PI * 2));
+    }
 
     /**
      * Changes direction by one degree (PI / 180) to the right.
      */
-    public abstract void turnRight();
-    public abstract void incrementSpeed(double amount, double speedFactor, double max);
-    public abstract void decrementSpeed(double amount, double speedFactor, double max);
+    public void turnRight(){
+        setDirection((getDirection() - (Math.PI / 180)) % (Math.PI * 2));
+    }
+    /**
+     * Sets a new higher currentSpeed value.
+     * New value will be between 0 and enginePower.
+     * @param amount Should be between 0 and 1.
+     */
+    public void incrementSpeed(double amount, double speedFactor, double max) {
+        setCurrentSpeed(MyUtil.clamp(getCurrentSpeed() + speedFactor * amount, 0, max));
+    }
+
+    /**
+     * Sets a new lower currentSpeed value.
+     * New value will be between 0 and enginePower.
+     * @param amount Should be between 0 and 1.
+     */
+    public void decrementSpeed(double amount, double speedFactor, double max) {
+        setCurrentSpeed(MyUtil.clamp(getCurrentSpeed() - speedFactor * amount, 0, max));
+    }
+
+
 }
