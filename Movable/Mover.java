@@ -2,9 +2,9 @@ package Movable;
 
 import Utilities.MyUtil;
 
-public class Movable_Helper extends MovableAbstract {
+public class Mover extends MovableAbstract {
 
-    public Movable_Helper(double xPosition, double yPosition, double direction) {
+    public Mover(double xPosition, double yPosition, double direction) {
         super(xPosition, yPosition, direction, 0);
     }
 

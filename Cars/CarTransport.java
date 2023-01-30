@@ -27,11 +27,12 @@ public class CarTransport<T extends Transportable> extends Car implements Transp
     }
     public boolean unload() {
         if (!rampDown) return false;
-        //transporter.updateTransports();
-        return transporter.unloadLast();
+        double newX = movable.getX() - 5 * movable.getDirection();
+        double newY = movable.getY() + 5 * movable.getDirection();
+        return transporter.unloadLast(newX, newY, movable.getDirection());
     }
     public boolean unload(T t) {
-        return false;
+        return unload();
     }
     public void raiseRamp() {
         rampDown = false;
@@ -50,6 +51,9 @@ public class CarTransport<T extends Transportable> extends Car implements Transp
         if(!rampDown) {
             movable.incrementSpeed(amount, speedFactor(), getEnginePower());
         }
+    }
+    public void updateTransports(double xPosition, double yPositon, double direction) {
+        transporter.updateTransports(xPosition, yPositon, direction);
     }
     public double speedFactor() {
         return getEnginePower() * 0.01 * 1.25;

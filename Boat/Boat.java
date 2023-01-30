@@ -1,11 +1,7 @@
 package Boat;
 
-import Cars.*;
-
 import java.awt.*;
-import java.util.ArrayList;
 
-import Transport.*;
 import Movable.*;
 
 
@@ -28,7 +24,7 @@ public abstract class Boat implements Movable {
         this.color = color;
         this.enginePower = enginePower;
         modelName = name;
-        movable = new Movable_Helper(xPosition, yPosition, direction);
+        movable = new Mover(xPosition, yPosition, direction);
 
     }
 

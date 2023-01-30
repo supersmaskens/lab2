@@ -2,10 +2,7 @@ package Cars;
 
 import java.awt.*;
 
-import Utilities.MyUtil;
-
 import Movable.*;
-import Transport.*;
 
 /**
  * Abstract class representing a car.
@@ -44,7 +41,7 @@ public abstract class Car implements Movable{
         this.color = color;
         this.enginePower = enginePower;
         this.modelName = name;
-        movable = new Movable_Helper(xPosition, yPosition, direction);
+        movable = new Mover(xPosition, yPosition, direction);
     }
 
     /**
