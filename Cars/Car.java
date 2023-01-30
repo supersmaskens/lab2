@@ -43,6 +43,13 @@ public abstract class Car extends Mover{
         this.modelName = name;
     }
 
+    public Car(){
+        this(0,null,0,"",0,0,0);
+    }
+    public Car(String name){
+        this(0,null,0,name,0,0,0);
+    }
+
     /**
      * Number of doors that the car has.
      */
