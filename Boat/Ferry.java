@@ -67,11 +67,11 @@ public class Ferry<T extends Transportable> extends Boat implements Transporter<
      * @return true if first transportable was successfully unloaded.
      */
     public boolean unload() {
-        return transporter.unloadFirst();
+        return transporter.unloadFirst(getX(),getY(),getDirection());
     }
 
     public boolean unload(T t) {
-        return transporter.unload(t);
+        return unload();
     }
 
     /**
