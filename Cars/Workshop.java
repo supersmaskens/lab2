@@ -21,6 +21,10 @@ public class Workshop<T extends Transportable> implements Transporter<T> {
         return transporter.contains(t);
     }
 
+    public boolean isEmpty() {
+        return transporter.isEmpty();
+    }
+
     public boolean load(T t) {
         return transporter.load(t);
     }

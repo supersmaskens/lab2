@@ -51,6 +51,9 @@ public class CarTransport<T extends Transportable> extends Car implements Transp
     public boolean contains(T t) {
         return transporter.contains(t);
     }
+    public boolean isEmpty() {
+        return transporter.isEmpty();
+    }
     public void gas(double amount) {
         if(!rampDown) {
             incrementSpeed(amount, speedFactor(), getEnginePower());

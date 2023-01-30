@@ -53,6 +53,10 @@ public class Ferry<T extends Transportable> extends Boat implements Transporter<
         return transporter.contains(t);
     }
 
+    public boolean isEmpty() {
+        return transporter.isEmpty();
+    }
+
     /**
      * Loads transportable if there is space left in on the ferry.
      * @param t Transportable

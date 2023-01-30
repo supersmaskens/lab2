@@ -60,6 +60,9 @@ public class Transporter_Helper<T extends Transportable> implements Transporter<
             t.updatePosition(xPosition, yPosition, direction);
         }
     }
+    public boolean isEmpty() {
+        return currentTransports.isEmpty();
+    }
     public void updateTransports(double xPosition, double yPosition, double direction) {
         for (T t : currentTransports) {
             updateTransport(t, xPosition, yPosition, direction);
