@@ -1,11 +1,7 @@
 package Boat;
 
-import Cars.*;
-
 import java.awt.*;
-import java.util.ArrayList;
 
-import Transport.*;
 import Movable.*;
 
 
@@ -30,6 +26,8 @@ public abstract class Boat extends Mover{
         modelName = name;
 
     }
+
+
 
 
 // TODO Boat probably needs all these methods, maybe enginePower or something more general
