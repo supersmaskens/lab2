@@ -13,9 +13,18 @@ public class Scania extends Car {
     }
 
     /**
+     * Overloaded constructor with default position and direction.
+     */
+
+    public Scania() {
+        this(0,0,0);
+    }
+
+    /**
      * Lowers the flatbed one degree per call
      * @return True if flatbedPosition > 0 and lowering is performed
      */
+
     public boolean decreaseTiltFlatbed() {
         if(flatbedPosition>0){
             flatbedPosition--;
@@ -63,7 +72,7 @@ public class Scania extends Car {
         }
     }
     @Override
-    double speedFactor() {
+    public double speedFactor() {
         return getEnginePower()/3;
     }
 }
