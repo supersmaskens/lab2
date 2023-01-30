@@ -19,7 +19,7 @@ public class CarTransport<T extends Transportable> extends Car implements Transp
     }
     public CarTransport(double xPosition, double yPosition, double direction,
                         int capacity) {
-        this(2, Color.red, 100, "Biltransport",
+        this(2, Color.red, 125, "Biltransport",
                 xPosition, yPosition, direction, capacity);
     }
     public CarTransport() {
