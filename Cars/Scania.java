@@ -26,7 +26,7 @@ public class Scania extends Car {
      */
 
     public boolean decreaseTiltFlatbed() {
-        if(flatbedPosition>0){
+        if(flatbedPosition>0 && getCurrentSpeed() == 0){
             flatbedPosition--;
             return true;
         }

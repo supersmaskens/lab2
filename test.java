@@ -4,16 +4,7 @@ import Transport.*;
 import java.awt.*;
 
 public class test {
-    @Test
-    public void V240WS() {
-        Volvo240 car = new Volvo240();
-        Saab95 car2 = new Saab95();
-        Workshop<Volvo240> ws = new Workshop<>(10, "Volvo240");
-        ws.loadeableOn();
-        ws.load(car);
-        assert(ws.contains(car));
-        //ws.load(car2);
-    }
+
     /*
     @Test
     public void carModelName() {

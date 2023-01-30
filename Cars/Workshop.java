@@ -9,7 +9,7 @@ public class Workshop<T extends Transportable> implements Transporter<T> {
         transporter = new Transporter_Helper<>(capacity);
     }
 
-    public void loadeableOn() {
+    public void loadableOn() {
         transporter.loadableOn();
     }
 

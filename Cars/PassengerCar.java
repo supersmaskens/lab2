@@ -14,8 +14,12 @@ public abstract class PassengerCar extends Car implements Transportable{
         return isTransported;
     }
     public boolean beTransported(){
-        isTransported = !isTransported;
-        return isTransported;
+        isTransported = true;
+        return true;
+    }
+    public boolean unTransport(){
+        isTransported = false;
+        return false;
     }
     public void move() {
         if(!isTransported) {

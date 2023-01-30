@@ -1,3 +1,4 @@
+package test;
 import Cars.*;
 import org.junit.Test;
 import Transport.*;
@@ -15,9 +16,10 @@ public class TestCars {
     public void V240WS() {
         Volvo240 car = new Volvo240();
         Saab95 car2 = new Saab95();
-        Workshop<Volvo240> ws = new Workshop<>(10, "Volvo240");
-        ws.loadeableOn();
+        Workshop<Volvo240> ws = new Workshop<>(10);
+        ws.loadableOn();
         ws.load(car);
+        //ws.load(car2); // Gives static error.
         assert(ws.contains(car));
     }
 

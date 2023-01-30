@@ -1,7 +1,6 @@
+package test;
 import Cars.*;
 import org.junit.Test;
-import Transport.*;
-import java.awt.*;
 import Boat.*;
 
 public class TestBoat {
@@ -10,16 +9,18 @@ public class TestBoat {
      */
     @Test
     public void loadFerry() {
-        Ferry<PassengerCar> ferry = new Ferry();
+        Ferry<PassengerCar> ferry = new Ferry<PassengerCar>();
         Volvo240 car = new Volvo240();
+        ferry.loadableOn();
         ferry.load(car);
         assert(ferry.contains(car));
     }
     @Test
     public void unloadFerry() {
-        Ferry<PassengerCar> ferry = new Ferry();
+        Ferry<PassengerCar> ferry = new Ferry<PassengerCar>();
         Volvo240 volvo = new Volvo240();
         Saab95 saab = new Saab95();
+        ferry.loadableOn();
         ferry.load(saab);
         ferry.load(volvo);
         ferry.unload();
@@ -27,22 +28,22 @@ public class TestBoat {
     }
     @Test
     public void unloadEmptyFerry() {
-        Ferry ferry = new Ferry();
+        Ferry<PassengerCar> ferry = new Ferry<PassengerCar>();
         ferry.unload();
-        assert(ferry.isEmpty()); // Maybe have a isEmpty method in ferry?
+        assert(ferry.isEmpty());
     }
     @Test
     public void loadFullFerry() {
-        Ferry ferry = new Ferry(0,0,0,0);
-        ferry.load(maxAmountOfCars); // Not sure how to accomplish this.
-        Car car = new Volvo240();
+        Ferry<PassengerCar> ferry = new Ferry<PassengerCar>(0,0,0,0);
+        Volvo240 car = new Volvo240();
         ferry.load(car);
         assert(!ferry.contains(car));
     }
+    /*
     @Test
     public void loadTruck() {
-        Ferry ferry = new Ferry(0,0,0,0);
-        Car truck = new ScaniaTruck();
-        ferry.load(truck); // should give error i suppose?
-    }
+        Ferry<PassengerCar> ferry = new Ferry(0,0,0,0);
+        Scania truck = new Scania();
+        ferry.load(truck); // Gives static error as it should.
+    } */
 }
