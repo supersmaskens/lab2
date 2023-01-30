@@ -9,8 +9,7 @@ import Transport.*;
 import Movable.*;
 
 
-public abstract class Boat implements Movable {
-    final private MovableAbstract movable;
+public abstract class Boat extends Mover{
 
     /**
      * Color of the boat.
@@ -25,29 +24,13 @@ public abstract class Boat implements Movable {
 
     public Boat(Color color, double enginePower, String name,
                 double xPosition, double yPosition, double direction) {
+        super(xPosition, yPosition, direction);
         this.color = color;
         this.enginePower = enginePower;
         modelName = name;
-        movable = new Movable_Helper(xPosition, yPosition, direction);
 
     }
 
-    public void turnLeft() {
-        movable.turnLeft();
-    }
-
-    public void turnRight() {
-        movable.turnRight();
-    }
-
-    public void move() {
-        movable.move();
-    }
-    public void updatePosition(double xPosition, double yPosition, double direction) {
-        movable.setX(xPosition);
-        movable.setY(yPosition);
-        movable.setDirection(direction);
-    }
 
 // TODO Boat probably needs all these methods, maybe enginePower or something more general
 // TODO Not sure how to inherit these though.
@@ -87,14 +70,14 @@ public abstract class Boat implements Movable {
      * Sets the current speed to 0.1.
      */
     public void startEngine() {
-        movable.setCurrentSpeed(0.1);
+        setCurrentSpeed(0.1);
     }
 
     /**
      * Sets the current speed to 0.
      */
     public void stopEngine() {
-        movable.setCurrentSpeed(0);
+        setCurrentSpeed(0);
     }
 
 
@@ -112,7 +95,7 @@ public abstract class Boat implements Movable {
      * @param amount Should be between 0 and 1.
      */
     public void gas(double amount) {
-        movable.incrementSpeed(amount, speedFactor(), enginePower);
+        incrementSpeed(amount, speedFactor(), enginePower);
     }
 
     /**
@@ -122,6 +105,6 @@ public abstract class Boat implements Movable {
      * @param amount Should be between 0 and 1.
      */
     public void brake(double amount) {
-        movable.decrementSpeed(amount, speedFactor(), enginePower);
+        decrementSpeed(amount, speedFactor(), enginePower);
     }
 }

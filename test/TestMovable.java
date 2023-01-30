@@ -12,13 +12,13 @@ public class TestMovable {
         Volvo240 car = new Volvo240(0,0,0);
         car.startEngine();
         car.move();
-        assert(car.getX == car.speedFactor() && car.getY == 0);
+        assert(car.getX() == car.speedFactor() && car.getY() == 0);
     }
     public void moveBoat() {
         Ferry ferry = new Ferry(0,0,0,0);
         ferry.move();
         ferry.startEngine();
-        assert(ferry.getX == ferry.speedFactor());
+        assert(ferry.getX()) == ferry.speedFactor());
 
 
     }
