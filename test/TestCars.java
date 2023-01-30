@@ -35,7 +35,6 @@ public class TestCars {
         car.setColor(Color.red);
         assert (car.getColor() == Color.red);
     }
-
     @Test
     public void engineStart() {
         Volvo240 car = new Volvo240();
@@ -221,6 +220,20 @@ public class TestCars {
         scania.startEngine();
         scania.increaseTiltFlatbed();
         assert(scania.getFlatbedPosition()==0);
+    }
+    @Test
+    public void scaniaDecreaseFlatbed(){
+        Scania sc = new Scania();
+        sc.increaseTiltFlatbed();
+        sc.decreaseTiltFlatbed();
+        Scania sc2 = new Scania();
+        sc2.increaseTiltFlatbed();
+        assert(sc.getFlatbedPosition() == 0 && sc2.getFlatbedPosition() == 1);
+    }
+    @Test
+    public void scaniaFailedDecreaseFlatbed(){
+        Scania sc = new Scania();
+        assert(!sc.decreaseTiltFlatbed());
     }
 
 }

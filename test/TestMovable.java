@@ -1,4 +1,5 @@
 package test;
+import Movable.*;
 import Boat.Ferry;
 import Cars.*;
 import org.junit.Test;
@@ -22,8 +23,11 @@ public class TestMovable {
         ferry.gas(1);
         ferry.move();
         assert((ferry.getX()) == ferry.speedFactor());
-
-
+    }
+    @Test
+    public void createMover() {
+        Mover mover = new Mover();
+        assert(mover.getX() == 0);
     }
     /*
     /**

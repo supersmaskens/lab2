@@ -43,11 +43,11 @@ public abstract class Car extends Mover{
         this.modelName = name;
     }
 
-    public Car(){
-        this(0,null,0,"",0,0,0);
+    public Car(){           //Dessa är svåra att testa eftersom dom inte kan användas utan att en subtyp kallar på dom.
+        this(0,Color.cyan,0,"",0,0,0);
     }
     public Car(String name){
-        this(0,null,0,name,0,0,0);
+        this(0,Color.green,0,name,0,0,0);
     }
 
     /**
