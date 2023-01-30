@@ -1,6 +1,8 @@
+package test;
 import Boat.Ferry;
 import Cars.*;
 import org.junit.Test;
+
 
 public class TestMovable {
 
