@@ -12,12 +12,12 @@ import Transport.*;
  */
 public abstract class Car implements Movable{
 
-    private MovableAbstract movable;
+    protected final MovableAbstract movable;
     private final int nrDoors;
     /**
      * Engine power of the car.
      */
-    private double enginePower;
+    private final double enginePower;
 
     /**
      * Color of the car.

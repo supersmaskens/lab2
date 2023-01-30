@@ -12,14 +12,14 @@ public class TestBoat {
      */
     @Test
     public void loadFerry() {
-        Ferry ferry = new Ferry(0,0,0,0);
-        Car car = new Volvo240();
+        Ferry<PassengerCar> ferry = new Ferry(0,0,0,0);
+        Volvo240 car = new Volvo240();
         ferry.load(car);
         assert(ferry.contains(car));
     }
     @Test
     public void unloadFerry() {
-        Ferry ferry = new Ferry(0,0,0,0);
+        Ferry<PassengerCar> ferry = new Ferry(0,0,0,0);
         Car car = new Volvo240();
         Car car1 = new Saab95();
         ferry.load(car);

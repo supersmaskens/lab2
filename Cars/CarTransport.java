@@ -1,34 +1,37 @@
 package Cars;
 
-import Transport.Transportable;
-import Transport.TransporterAbstract;
-import Transport.Transporter_Helper;
+import Transport.*;
+
 
 import java.awt.*;
 
-public class CarTransport extends Car {
-    private final Transporter_Helper transporter;
+public class CarTransport<T extends Transportable> extends Car implements Transporter<T> {
+    private final Transporter_Helper<T> transporter;
 
     private boolean rampDown;
 
     public CarTransport(int nrDoors, Color color, double enginePower, String name,
-                        double xPosition, double yPosition, double direction, Transporter_Helper t) {
+                        double xPosition, double yPosition, double direction, int capacity) {
         super(nrDoors, color, enginePower, name, xPosition, yPosition, direction);
-        transporter = t;
+        transporter = new Transporter_Helper<T>(capacity);
         rampDown = false;
         transporter.loadableOff();
     }
     public CarTransport(double xPosition, double yPosition, double direction,
-                        int capacity, String transportType) {
-        this(2, Color.red, 100, "Biltransport", xPosition, yPosition, direction
-        , new Transporter_Helper(capacity, transportType));
+                        int capacity) {
+        this(2, Color.red, 100, "Biltransport",
+                xPosition, yPosition, direction, capacity);
     }
-    public void load(Transportable t) {
-        transporter.load(t);
+    public boolean load(T t) {
+        return transporter.load(t);
     }
-    public void unload() {
+    public boolean unload() {
+        if (!rampDown) return false;
         //transporter.updateTransports();
-        transporter.unloadLast();
+        return transporter.unloadLast();
+    }
+    public boolean unload(T t) {
+        return false;
     }
     public void raiseRamp() {
         rampDown = false;
@@ -40,9 +43,14 @@ public class CarTransport extends Car {
             transporter.loadableOn();
         }
     }
-    /*public void gas(double amount) {
-        movable.incrementSpeed(amount, speedFactor(), enginePower);
-    }*/
+    public boolean contains(T t) {
+        return transporter.contains(t);
+    }
+    public void gas(double amount) {
+        if(!rampDown) {
+            movable.incrementSpeed(amount, speedFactor(), getEnginePower());
+        }
+    }
     public double speedFactor() {
         return getEnginePower() * 0.01 * 1.25;
     }
