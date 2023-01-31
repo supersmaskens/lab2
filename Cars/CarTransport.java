@@ -5,12 +5,23 @@ import Transport.*;
 
 import java.awt.*;
 
+/**
+ * A car transport meant to transport cars.
+ * @param <T> Intended for cars but could be any transportable.
+ */
 public class CarTransport<T extends Transportable> extends Car implements Transporter<T> {
-
+    /**
+     * A helper that helps with transporting.
+     */
     private final Transporter_Helper<T> transporter;
-
+    /**
+     * Represents the transports ramp position.
+     */
     private boolean rampDown;
 
+    /**
+     * Basic car transport constructor.
+     */
     public CarTransport(int nrDoors, Color color, double enginePower, String name,
                         double xPosition, double yPosition, double direction, int capacity) {
         super(nrDoors, color, enginePower, name, xPosition, yPosition, direction);
@@ -18,11 +29,19 @@ public class CarTransport<T extends Transportable> extends Car implements Transp
         rampDown = false;
         transporter.loadableOff();
     }
+
+    /**
+     * Car transport constructor with default values except for position, direction and capacity.
+     */
     public CarTransport(double xPosition, double yPosition, double direction,
                         int capacity) {
         this(2, Color.red, 125, "Biltransport",
                 xPosition, yPosition, direction, capacity);
     }
+
+    /**
+     * Car transport constructor with default values.
+     */
     public CarTransport() {
         this(2, Color.red, 100, "Biltransport"
         , 0, 0, 0, 32);

@@ -8,6 +8,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A ferry that can transport various kinds of transportables.
+ */
 
 public class Ferry<T extends Transportable> extends Boat implements Transporter<T> {
     /**
@@ -17,10 +20,7 @@ public class Ferry<T extends Transportable> extends Boat implements Transporter<
     private final Transporter_Helper<T> transporter;
 
     /**
-     *
-     * @param xPosition start position on the x-axis
-     * @param yPosition start position on the y-axis
-     * @param direction start direction using radians 0 means along x-axis
+     *  Basic constructor for a ferry.
      * @param capacity max amount of Transportables.
      */
 
@@ -53,14 +53,23 @@ public class Ferry<T extends Transportable> extends Boat implements Transporter<
         return transporter.contains(t);
     }
 
+    /**
+     * Return true if the ferry is not currently transporting anything.
+     */
     public boolean isEmpty() {
         return transporter.isEmpty();
     }
 
+    /**
+     * Allows the ferry to transport.
+     */
     public void loadableOn() {
         transporter.loadableOn();
     }
 
+    /**
+     * Prevents the ferry from transporting.
+     */
     public void loadableOff() {
         transporter.loadableOff();
     }
@@ -81,15 +90,18 @@ public class Ferry<T extends Transportable> extends Boat implements Transporter<
         return transporter.unloadFirst(getX(),getY(),getDirection());
     }
 
+    /**
+     * Calls unload().
+     */
     public boolean unload(T t) {
         return unload();
     }
 
     /**
-     * Updates position of Ferry.
-     * @param xPosition
-     * @param yPosition
-     * @param direction
+     * Updates the position of all transportables currently in transporter.
+     * @param xPosition Should be the ferrys x position.
+     * @param yPosition Should be the ferrys y position.
+     * @param direction Should be the ferrys direction.
      */
     public void updateTransports(double xPosition, double yPosition, double direction) {
         transporter.updateTransports(xPosition, yPosition, direction);

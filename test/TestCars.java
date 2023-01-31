@@ -7,8 +7,6 @@ import java.awt.*;
 
 import Boat.*;
 
-// Todo: Car seems to be missing getCurrentSpeed
-
 
 public class TestCars {
 

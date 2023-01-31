@@ -3,6 +3,11 @@ package Transport;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A helper that can be used by transporters for transporting.
+ * @param <T> Any transportable.
+ */
+
 public class Transporter_Helper<T extends Transportable> implements Transporter<T>{
     /**
      * List of transportables currently being transported.
@@ -62,14 +67,15 @@ public class Transporter_Helper<T extends Transportable> implements Transporter<
      * Unloads a given transportable from the transporter, returns true if it succeeds.
      */
     public boolean unload(T t) {
-        return currentTransports.remove(t);
+        if (canLoad) return currentTransports.remove(t);
+        return false;
     }
 
     /**
      * Unloads the transportable that was loaded first.
      */
     public boolean unloadFirst(double xPosition, double yPositon, double direction) {
-        if (currentTransports.isEmpty()) {
+        if (currentTransports.isEmpty() || !canLoad) {
             return false;
         }
         currentTransports.get(0).unTransport();
@@ -82,7 +88,7 @@ public class Transporter_Helper<T extends Transportable> implements Transporter<
      * Unloads the most recently loaded transportable from the transporter, returns true if it succeeds.
      */
     public boolean unloadLast(double xPosition, double yPositon, double direction) {
-        if (currentTransports.isEmpty()) {
+        if (currentTransports.isEmpty() || !canLoad) {
             return false;
         }
         currentTransports.get(currentTransports.size()-1).unTransport();

@@ -4,6 +4,9 @@ import java.awt.*;
 
 import Movable.*;
 
+/**
+ * Abstract class representing a boat.
+ */
 
 public abstract class Boat extends Mover{
 
@@ -11,13 +14,18 @@ public abstract class Boat extends Mover{
      * Color of the boat.
      */
     private Color color;
+    /**
+     * Engine power of the boat.
+     */
     private final double enginePower;
     /**
      * The boat model name.
      */
     private final String modelName;
 
-
+    /**
+     * Basic constructor for a boat.
+     */
     public Boat(Color color, double enginePower, String name,
                 double xPosition, double yPosition, double direction) {
         super(xPosition, yPosition, direction);
@@ -27,12 +35,9 @@ public abstract class Boat extends Mover{
 
     }
 
-
-
-
-// TODO Boat probably needs all these methods, maybe enginePower or something more general
-// TODO Not sure how to inherit these though.
-
+    /**
+     * Gives the boats engine power.
+     */
     public double getEnginePower() {
         return enginePower;
     }
@@ -83,8 +88,6 @@ public abstract class Boat extends Mover{
      * SpeedFactor is used by each subclass to calculate speed when moving.
      */
     abstract double speedFactor();
-
-    // TODO fix this method according to lab pm
 
     /**
      * Increases the currentSpeed value.

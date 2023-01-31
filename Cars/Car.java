@@ -43,13 +43,6 @@ public abstract class Car extends Mover{
         this.modelName = name;
     }
 
-    public Car(){           //Dessa är svåra att testa eftersom dom inte kan användas utan att en subtyp kallar på dom.
-        this(0,Color.cyan,0,"",0,0,0);
-    }
-    public Car(String name){
-        this(0,Color.green,0,name,0,0,0);
-    }
-
     /**
      * Number of doors that the car has.
      */
@@ -109,10 +102,6 @@ public abstract class Car extends Mover{
      */
     abstract double speedFactor();
 
-
-
-    // TODO fix this method according to lab pm
-
     /**
      * Increases the currentSpeed value.
      * Calls incrementSpeed with a value between 0 and 1.
@@ -122,7 +111,6 @@ public abstract class Car extends Mover{
         incrementSpeed(amount, speedFactor(), enginePower);
     }
 
-    // TODO fix this method according to lab pm
 
     /**
      * Decreases the currentSpeed value.

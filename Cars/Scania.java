@@ -2,10 +2,18 @@ package Cars;
 
 import java.awt.*;
 
+/**
+ * A Scania truck with a flatbed.
+ */
 public class Scania extends Car {
-
+    /**
+     * Represents the flatbeds current angle.
+     */
     private int flatbedPosition;
 
+    /**
+     * Basic constructor for a Scania truck.
+     */
     public Scania(double xPosition, double yPosition, double direction){
         super(2, Color.black, 400, "Cars.Scania", xPosition, yPosition, direction);
         stopEngine();
@@ -22,7 +30,7 @@ public class Scania extends Car {
 
     /**
      * Lowers the flatbed one degree per call
-     * @return True if flatbedPosition > 0 and lowering is performed
+     * @return True if flatbedPosition is greater than 0 and lowering is performed
      */
 
     public boolean decreaseTiltFlatbed() {
@@ -35,7 +43,7 @@ public class Scania extends Car {
 
     /**
      * Raises the flatbed one degree per call
-     * @return True if flatbedPosition < 70 and raising is performed
+     * @return True if flatbedPosition is less than 70 and raising is performed
      */
     public boolean increaseTiltFlatbed() {
         if(flatbedPosition<70 && getCurrentSpeed() == 0) {

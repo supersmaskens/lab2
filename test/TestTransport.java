@@ -70,5 +70,15 @@ public class TestTransport {
         bt.gas(1);
         assert(!bt.lowerRamp() && bt.isEmpty() && !bt.unload(car));
     }
+    @Test
+    public void cantUnload() {
+        Workshop<PassengerCar> ferry = new Workshop<>(32);
+        Volvo240 car = new Volvo240();
+        ferry.loadableOn();
+        ferry.load(car);
+        ferry.loadableOff();
+        ferry.unload(car);
+        assert(ferry.contains(car));
+    }
 
 }

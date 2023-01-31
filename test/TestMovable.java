@@ -24,11 +24,7 @@ public class TestMovable {
         ferry.move();
         assert((ferry.getX()) == ferry.speedFactor());
     }
-    @Test
-    public void createMover() {
-        Mover mover = new Mover();
-        assert(mover.getX() == 0);
-    }
+
     /*
     /**
      * Control if all movables can use turnLeft

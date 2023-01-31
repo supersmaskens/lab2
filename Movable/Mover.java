@@ -2,7 +2,11 @@ package Movable;
 
 import Utilities.MyUtil;
 
-public class Mover implements Movable {
+/**
+ * Abstract for anything that should be able to move.
+ */
+
+public abstract class Mover implements Movable {
 
     /**
      * Represents position on X-axis.
@@ -16,20 +20,31 @@ public class Mover implements Movable {
      * Represents direction and should always be between -2 * PI and 2 * PI.
      */
     private double direction;
-
+    /**
+     * represents the movers current speed, used when calculating new position after moving.
+     */
     private double currentSpeed;
 
+    /**
+     * Basic constructor for a mover.
+     * @param xPosition
+     * @param yPosition
+     * @param direction
+     * @param currentSpeed
+     */
     public Mover(double xPosition, double yPosition, double direction, double currentSpeed) {
         this.xPosition = xPosition;
         this.yPosition = yPosition;
         this.direction = direction;
         this.currentSpeed = currentSpeed;
-
     }
+
+    /**
+     * Constructor that sets the intitial spped to 0.
+     */
     public Mover(double xPosition, double yPosition, double direction){
         this(xPosition,yPosition,direction,0);
     }
-    public Mover(){this(0,0,0,0);}
     /**
      * Gives the current X position.
      * @return Current X position.
@@ -85,17 +100,28 @@ public class Mover implements Movable {
         return currentSpeed;
     }
 
+    /**
+     * Sets a new currentSpeed value.
+     */
+
     public void setCurrentSpeed(double newSpeed) {
         currentSpeed = newSpeed;
     }
 
     /**
-     * Changes the current X and Y coordinates based on objects currentSpeed value.
+     * Changes the current X and Y coordinates based on objects currentSpeed value and direction.
      */
     public void move() {
         setX(Math.cos(getDirection()) * getCurrentSpeed());
         setY(-Math.sin(getDirection()) * getCurrentSpeed());
     }
+
+    /**
+     * Updates the position of a mover.
+     * @param xPosition New x position.
+     * @param yPosition New y position.
+     * @param direction New direction.
+     */
     public void updatePosition(double xPosition, double yPosition, double direction) {
         setX(xPosition);
         setY(yPosition);

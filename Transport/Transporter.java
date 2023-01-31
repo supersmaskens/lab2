@@ -1,5 +1,10 @@
 package Transport;
 
+/**
+ * Interface for transporters.
+ * @param <T> Any transportable.
+ */
+
 public interface Transporter<T extends Transportable> {
     /**
      * Returns true if transporter is carrying the given transportable.
