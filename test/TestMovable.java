@@ -1,5 +1,4 @@
 package test;
-import Movable.*;
 import Boat.Ferry;
 import Cars.*;
 import org.junit.Test;

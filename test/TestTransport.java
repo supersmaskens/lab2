@@ -1,7 +1,5 @@
 package test;
-import Boat.*;
 import Cars.*;
-import Transport.*;
 import org.junit.Test;
 
 public class TestTransport {

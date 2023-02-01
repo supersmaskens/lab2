@@ -1,11 +1,7 @@
 package test;
 import Cars.*;
 import org.junit.Test;
-import Transport.*;
-
 import java.awt.*;
-
-import Boat.*;
 
 
 public class TestCars {
@@ -148,13 +144,11 @@ public class TestCars {
         scania.stopEngine();
         assert (scania.getCurrentSpeed() == 0);
     }
-
     @Test
     public void defaultScaniaTest() {
         Scania scania = new Scania();
         assert (scania.getNrDoors() == 2 && scania.getEnginePower() == 400 && scania.getX() == 0 && scania.getY() == 0);
     }
-
     @Test
     public void scaniaTurnLeftTest() {
         Scania scania = new Scania();

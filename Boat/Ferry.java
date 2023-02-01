@@ -1,12 +1,7 @@
 package Boat;
-
-import Movable.*;
 import Transport.*;
-import Cars.*;
-
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  * A ferry that can transport various kinds of transportables.
